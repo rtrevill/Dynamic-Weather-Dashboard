@@ -1,0 +1,19 @@
+header {
+    height: 80px;
+    border: 2px solid rgb(236, 162, 77);
+}
+
+.row {
+    border: 2px solid black;
+}
+
+.card {
+    display: inline-block;
+}
+
+#five-day {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:flex-start;
+}

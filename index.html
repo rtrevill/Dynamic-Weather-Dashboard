@@ -4,8 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rtrevill dynamic weather dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" id="search-box">
+                <h2>Search for a City:</h2>
+                <form action="#">
+                    <input type="text" placeholder="San Diego">
+                    <button type="button">Search</button>
+                </form>
+                <ul id="past-searches">
+                </ul>
+
+            </div>
+            <div class="col-9" id="forecast-info">
+                <div class="row">
+                    <div class="col-9" id="current-conditions">
+                        <h2>Name of city and date <img src="" alt="icon now"></h2>
+                        <p>Temp: </p>
+                        <p>Wind: </p>
+                        <p>Humidity: </p>
+                    </div>
+                </div>
+                <div class="row" id="forecast-box">
+                    <div class="col" id="five-day">
+                        <h3 style="width: 100%;">5-Day Forecast:</h3>
+                        <br>
+                        <div class="card col-2" id="card-1">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <img src="" alt="icon day 1">
+                              <p class="card-text">Temp: </p>
+                              <p class="card-text">Wind: </p>
+                              <p class="card-text">Humidity: </p>
+                            </div>
+                          </div>
+                          <div class="card col-2" id="card-2">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <img src="" alt="icon day 2">
+                              <p class="card-text">Temp: </p>
+                              <p class="card-text">Wind: </p>
+                              <p class="card-text">Humidity: </p>
+                            </div>
+                          </div>
+                          <div class="card col-2" id="card-3">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <img src="" alt="icon day 3">
+                              <p class="card-text">Temp: </p>
+                              <p class="card-text">Wind: </p>
+                              <p class="card-text">Humidity: </p>
+                            </div>
+                          </div>
+                          <div class="card col-2" id="card-4">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <img src="" alt="icon day 4">
+                              <p class="card-text">Temp: </p>
+                              <p class="card-text">Wind: </p>
+                              <p class="card-text">Humidity: </p>
+                            </div>
+                          </div>
+                          <div class="card col-2" id="card-5">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <img src="" alt="icon day 5">
+                              <p class="card-text">Temp: </p>
+                              <p class="card-text">Wind: </p>
+                              <p class="card-text">Humidity: </p>
+                            </div>
+                          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+
 </body>
 </html>
