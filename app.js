@@ -88,19 +88,31 @@ function getForecast(){
 
     function saveAndDisplay(input){
         var searchArray = [];
+        var uList = document.getElementById('past-searches');
+        $('#past-searches').empty();
+
         if ((localStorage.getItem('weatherSearches'))===null){
             searchArray.push(input);
         }
         else {
             searchArray = JSON.parse(localStorage.getItem('weatherSearches'));
-            searchArray.push(input);
+            searchArray.unshift(input);
         }
         console.log(searchArray);
-        for (let k = 0, k<searchArray.length; k++){
 
+        for (let j = 0; j < searchArray.length; j++){
+            console.log(searchArray[j]);
+            var newLi = document.createElement("li");
+            newLi.innerText = searchArray[j];
+            
+            uList.appendChild(newLi);
         }
-        
-        });
+        if (searchArray.length > 8){
+            searchArray.pop();
+        }
+
+        localStorage.setItem('weatherSearches', JSON.stringify(searchArray));
+
 
     }
 
