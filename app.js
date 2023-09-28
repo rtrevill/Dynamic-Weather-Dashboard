@@ -86,10 +86,29 @@ function getForecast(){
         })
     };
 
+    function saveAndDisplay(input){
+        var searchArray = [];
+        if ((localStorage.getItem('weatherSearches'))===null){
+            searchArray.push(input);
+        }
+        else {
+            searchArray = JSON.parse(localStorage.getItem('weatherSearches'));
+            searchArray.push(input);
+        }
+        console.log(searchArray);
+        for (let k = 0, k<searchArray.length; k++){
+
+        }
+        
+        });
+
+    }
+
 
     $('#search-btn').on('click', function(){
         citySearch = $('input').val();
-
+        $('input').val("")
+        saveAndDisplay(citySearch);
         getCurrentWeather();
         getForecast();
         
