@@ -14,6 +14,15 @@ $(document).ready(function() {
         })
         .then(function(data){
             console.log(data);
+            for (let i = 1; i < 6; i++){
+            //    $('#forecast-box h4:nth-child([i])').text("Yay!!");
+                var cardNum = document.getElementById('card' + [i]);
+                var cardy = $('#card' + [i]);
+                console.log(cardNum);
+                console.log(cardy);
+                $(cardy).find('h4').append("Hello");
+                // cardNum.append("Hello!!");                
+            };
             return data;
         })
 
