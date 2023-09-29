@@ -126,10 +126,21 @@ function createList(){
         console.log(searchArray[j]);
         var newLi = document.createElement("li");
         newLi.innerText = searchArray[j];
+        $(newLi).addClass('list-group-item list-group-item-success my-2');
         var uList = document.getElementById('past-searches');
 
-        
         uList.appendChild(newLi);
+
+        $('li').on('click', function(event){
+            var prevSearch = event.target.innerText;
+            console.log(prevSearch);
+            citySearch = prevSearch;
+            getCurrentWeather();
+            getForecast();
+    
+        })
+    
+
 
 }}
 
@@ -150,7 +161,7 @@ function saveNew(input){
         //     newLi.innerText = searchArray[j];
             
         //     uList.appendChild(newLi);
-        createList(searchArray);
+        createList();
 
         
         if (searchArray.length > 8){
@@ -181,14 +192,15 @@ function saveNew(input){
         }
     })
 
-    $('li').on('click', function(event){
-        var prevSearch = event.target.innerText;
-        console.log(prevSearch);
-        citySearch = prevSearch;
-        getCurrentWeather();
-        getForecast();
+    // $('#past-searches li').on('click', function(event){
+    // $('li').on('click', function(event){
+    //     var prevSearch = event.target.innerText;
+    //     console.log(prevSearch);
+    //     citySearch = prevSearch;
+    //     getCurrentWeather();
+    //     getForecast();
 
-    })
+    // })
 
 
 function convertDate(data){
