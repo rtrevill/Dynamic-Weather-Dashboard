@@ -12,6 +12,7 @@ $(document).ready(function() {
     // var newWeatherdemo = ''
     getCurrentWeather();
     getForecast();
+    saveAndDisplay();
 
 
 function getForecast(){ 
@@ -97,11 +98,14 @@ function getForecast(){
     function saveAndDisplay(input){
         var searchArray = [];
         var uList = document.getElementById('past-searches');
+        console.log(input);
         $('#past-searches').empty();
-        if (input === null){
+        if (typeof input === 'undefined'){
+            console.log('NULLL')
             displayExistSaves();
         }
         else{
+            console.log('Not --- NULLL')
             saveNew(input);
         }
     }
@@ -112,7 +116,8 @@ function displayExistSaves(){
     }
     else {
         searchArray = JSON.parse(localStorage.getItem('weatherSearches'));
-        searchArray.unshift(input);
+        createList();
+        // searchArray.unshift(input);
 }}
 
 
@@ -163,9 +168,13 @@ function saveNew(input){
         saveAndDisplay(citySearch);
         getCurrentWeather();
         getForecast();
+    });
+
+    $('#clr-btn').on('click', function(){
         
 
-    });
+
+    })
 
 function convertDate(data){
     var timestamp = data.dt.toString();
