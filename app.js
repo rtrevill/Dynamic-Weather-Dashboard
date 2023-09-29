@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
 function getForecast(){ 
-    weatherByCityName = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&mode=json&appid=df3c903c708377f2df8e6006f9343fde'   
+    weatherByCityName = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&mode=json&appid=df3c903c708377f2df8e6006f9343fde'   
     fetch(weatherByCityName)
         .then(function(response){
             return response.json();
@@ -28,6 +28,7 @@ function getForecast(){
                 var readingNumber = data.list[j-1];
                 console.log(readingNumber);
                 weatherArray.push(readingNumber);
+                
                 }
             }
 
@@ -44,10 +45,15 @@ function getForecast(){
                 // console.log(cardNum);
                 console.log(cardy);
                 $(cardy).find('img').prop('src', iconForCard)
-                $(cardy).find('h4').text("Hello" + [i]);
-                $(cardy).find('p:first').text('Temp: ' +cardTemp);
-                $(cardy).find('p:nth-of-type(2)').text('Wind: ' +cardWind);
-                $(cardy).find('p:nth-of-type(3)').text('Humidity: ' +cardHumid);
+                ;
+                $(cardy).find('p:first').text('Temp: ' +cardTemp + " C");
+                $(cardy).find('p:nth-of-type(2)').text('Wind: ' +cardWind + " km/h");
+                $(cardy).find('p:nth-of-type(3)').text('Humidity: ' +cardHumid + " %");
+
+                var timeFuture = convertDate(weatherArray[i]);
+                var timeFuture2 = timeFuture.format('DD/MM/YY');
+                console.log(timeFuture2);
+                $(cardy).find('h4').text(timeFuture2);
                 // cardNum.append("Hello!!");                
             };
             return data;
@@ -73,15 +79,17 @@ function getForecast(){
             var currentHumid = data.main.humidity;
             console.log(currentTemp);
            
-            $('#current-conditions h2').text(cityName);
-            $('#current-conditions p:first').text("Temp: " + currentTemp);
-            $('#current-conditions p:nth-of-type(2)').text("Wind: " + currentWind);
-            $('#current-conditions p:nth-of-type(3)').text("Humidity: " + currentHumid);
+            $('#current-conditions h2').text(cityName + "   ");
+            $('#current-conditions p:first').text("Temp: " + currentTemp + " C");
+            $('#current-conditions p:nth-of-type(2)').text("Wind: " + currentWind + " km/h");
+            $('#current-conditions p:nth-of-type(3)').text("Humidity: " + currentHumid + " %");
 
-            var timestamp = data.dt.toString();
-            console.log(timestamp);
-            var currentTime = dayjs.unix(timestamp);
-            console.log(currentTime.format('H mm ss DD MMMM YYYY'));
+            // var timestamp = data.dt.toString();
+            // console.log(timestamp);
+            // var currentTime = dayjs.unix(timestamp);
+            var timeNow = convertDate(data);
+            timeNow = timeNow.format('DD/MM/YYYY');
+            $('#current-conditions h2').append(timeNow);
             return data;
         })
     };
@@ -90,7 +98,37 @@ function getForecast(){
         var searchArray = [];
         var uList = document.getElementById('past-searches');
         $('#past-searches').empty();
+        if (input === null){
+            displayExistSaves();
+        }
+        else{
+            saveNew(input);
+        }
+    }
 
+function displayExistSaves(){
+    if ((localStorage.getItem('weatherSearches'))===null){
+        return;
+    }
+    else {
+        searchArray = JSON.parse(localStorage.getItem('weatherSearches'));
+        searchArray.unshift(input);
+}}
+
+
+function createList(){
+    for (let j = 0; j < searchArray.length; j++){
+        console.log(searchArray[j]);
+        var newLi = document.createElement("li");
+        newLi.innerText = searchArray[j];
+        var uList = document.getElementById('past-searches');
+
+        
+        uList.appendChild(newLi);
+
+}}
+
+function saveNew(input){
         if ((localStorage.getItem('weatherSearches'))===null){
             searchArray.push(input);
         }
@@ -100,13 +138,15 @@ function getForecast(){
         }
         console.log(searchArray);
 
-        for (let j = 0; j < searchArray.length; j++){
-            console.log(searchArray[j]);
-            var newLi = document.createElement("li");
-            newLi.innerText = searchArray[j];
+        // for (let j = 0; j < searchArray.length; j++){
+        //     console.log(searchArray[j]);
+        //     var newLi = document.createElement("li");
+        //     newLi.innerText = searchArray[j];
             
-            uList.appendChild(newLi);
-        }
+        //     uList.appendChild(newLi);
+        createList(searchArray);
+
+        
         if (searchArray.length > 8){
             searchArray.pop();
         }
@@ -126,6 +166,13 @@ function getForecast(){
         
 
     });
+
+function convertDate(data){
+    var timestamp = data.dt.toString();
+    console.log(timestamp);
+    var currentTime = dayjs.unix(timestamp);
+    return currentTime;
+}
 
 
 });
