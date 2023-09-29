@@ -135,6 +135,7 @@ function createList(){
 
 function saveNew(input){
         if ((localStorage.getItem('weatherSearches'))===null){
+            searchArray = [];
             searchArray.push(input);
         }
         else {
@@ -171,7 +172,15 @@ function saveNew(input){
     });
 
     $('#clr-btn').on('click', function(){
-        
+        if ((localStorage.getItem('weatherSearches'))===null){
+            return;
+        }
+        else {
+            $('#past-searches').empty();
+            var tempStore = JSON.parse(localStorage.getItem('weatherSearches'));
+            tempStore = []
+            localStorage.setItem('weatherSearches',JSON.stringify(tempStore));
+        }
 
 
     })
