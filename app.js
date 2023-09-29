@@ -158,8 +158,6 @@ function saveNew(input){
         }
 
         localStorage.setItem('weatherSearches', JSON.stringify(searchArray));
-
-
     }
 
 
@@ -181,9 +179,17 @@ function saveNew(input){
             tempStore = []
             localStorage.setItem('weatherSearches',JSON.stringify(tempStore));
         }
+    })
 
+    $('li').on('click', function(event){
+        var prevSearch = event.target.innerText;
+        console.log(prevSearch);
+        citySearch = prevSearch;
+        getCurrentWeather();
+        getForecast();
 
     })
+
 
 function convertDate(data){
     var timestamp = data.dt.toString();
