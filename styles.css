@@ -1,10 +1,10 @@
-header {
-    height: 80px;
-    border: 2px solid rgb(236, 162, 77);
-}
-
-.row {
+/* .row {
     border: 2px solid black;
+} */
+
+.container, #current-conditions {
+    border: 1px solid black;
+
 }
 
 .card {
@@ -16,7 +16,15 @@ header {
 
 .card-body {
     font-size: 1rem;
+    /* font-weight: 700; */
     padding: 4px;
+    color: white;
+    background-color: #323D4F;
+
+}
+
+.icon {
+    width: 50px;
 }
 
 #five-day {
@@ -26,19 +34,77 @@ header {
     align-content:flex-start;
 }
 
+#past-searches {
+    padding-left: 0;
+}
+
 input {
-    width: 95%;
-    max-width: 200px;
+    width: 98%;
+    max-width: 230px;
     display: block;
     margin-bottom: 6px;
 }
 
+h1 { 
+    padding-left: 50%;
+    background: linear-gradient(90deg, #6991E3,#261360);
+    color: white;
+    font-size: 2.2rem;
+    line-height: 3.2rem;
+}
+
+h2 {
+    display: inline-block;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
 h4 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 button {
     margin: 5px;
+    width: 45%;
+    color: white;
+    background-color: #6991E3;
+    display: inline-block;
+}
+
+form {
+    padding-bottom: 12px;
+    border-bottom: 2px solid gray;
+}
+
+ul {
+    padding-left: none;
+}
+
+li {
+    background-color: #AEAEAE;
+    font-weight: 700;
+    text-align: center;
+    list-style-type: none;
+    border-radius: 5px;
+    margin: 12px auto;
+    height: 35px;
+    line-height: 35px;
+}
+
+li:hover {
+    color: rgb(236, 138, 138);
+    cursor: pointer;
+}
+
+li:active {
+    background-color: white;
+}
+
+p  {
+    font-weight: 600;
 }
 
 
@@ -46,24 +112,40 @@ button {
     .card-body {
         font-size: 0.8rem;
 }
+
+button {
+    width: 40%;
+}
 }
 @media screen and (max-width: 992px){
     .card {
-        background-color: red;
+        margin: 5px auto;
         width: 30%;
-
     } 
 
     .card-body {
         font-size: 1.0rem;
     }
+
+    button {
+        width: 80%;
+        margin: 5px auto; 
+        display: block;
+    }
+
+    /* #five-day {
+        justify-content: flex-start;
+    } */
 }
 
 @media screen and (max-width: 768px){
     .card {
-        background-color: blue;
         width: 48%;
     } 
+
+    h3 {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 500px){
@@ -78,16 +160,21 @@ button {
     
     #search-box {
         width: 100%;
-        
+        text-align: center;
+       
     }
     
+    input[type=text] {
+        margin: auto auto;
+    }
+
     #forecast-info{
         width: 100%;
 
     }
     .card {
         background-color: green;
-        width: 95%;
+        width: 85%;
         text-align: center;
         line-height: 11px;
     } 

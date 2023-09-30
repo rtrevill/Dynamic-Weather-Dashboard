@@ -72,8 +72,8 @@ function getForecast(){
             var iconCode = data.weather[0].icon;
             console.log(iconCode);
             var currentIcon = "https://openweathermap.org/img/wn/"+ iconCode +"@2x.png";
-            $('#current-conditions img').removeProp('src');
-            $('#current-conditions img').prop('src', currentIcon);
+            $('#icon-now').removeProp('src');
+            $('#icon-now').prop('src', currentIcon);
             var cityName = data.name;
             var currentTemp = data.main.temp;
             var currentWind = data.wind.speed;
@@ -126,7 +126,7 @@ function createList(){
         console.log(searchArray[j]);
         var newLi = document.createElement("li");
         newLi.innerText = searchArray[j];
-        $(newLi).addClass('list-group-item list-group-item-success my-2');
+        // $(newLi).addClass('list-group-item list-group-item-success my-2');
         var uList = document.getElementById('past-searches');
 
         uList.appendChild(newLi);
