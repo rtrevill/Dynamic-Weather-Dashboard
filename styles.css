@@ -4,7 +4,7 @@
 
 .container, #current-conditions {
     border: 1px solid black;
-
+    margin-top: 20px;
 }
 
 .card {
@@ -19,7 +19,7 @@
     /* font-weight: 700; */
     padding: 4px;
     color: white;
-    background-color: #323D4F;
+    background-color: #1f0d5c;
 
 }
 
