@@ -90,7 +90,7 @@ function getForecast(){
             // var currentTime = dayjs.unix(timestamp);
             var timeNow = convertDate(data);
             timeNow = timeNow.format('DD/MM/YYYY');
-            $('#current-conditions h2').append(timeNow);
+            $('#current-conditions h2').append("(" + timeNow + ")");
             return data;
         })
     };
